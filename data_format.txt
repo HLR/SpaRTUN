@@ -1,0 +1,48 @@
+scn_rels
+[[[...], 'below'], [[...], 'below']]
+special variables:
+function variables:
+0: [[1, 0], 'below']
+1: [[0, 2], 'below']
+len(): 2
+
+
+scn_objs
+[[[...]], [[...], [...], [...]], [[...]]]
+special variables:
+function variables:
+0: [[[...], {...}]]
+special variables:
+function variables:
+0: [['touching the bottom edge of', 'in'], {'color': 'Yellow', 'size': 20, 'type': 'square', 'x_loc': 40, 'y_loc': 80}]
+len(): 1
+1: [[[...], {...}], [[...], {...}], [[...], {...}]]
+special variables:
+function variables:
+0: [['touching the bottom edge of', 'in'], {'color': '#0099ff', 'size': 20, 'type': 'square', 'x_loc': 40, 'y_loc': 80}]
+1: [['in'], {'color': '#0099ff', 'size': 20, 'type': 'square', 'x_loc': 40, 'y_loc': 59}]
+2: [['in'], {'color': 'Yellow', 'size': 20, 'type': 'square', 'x_loc': 40, 'y_loc': 38}]
+len(): 3
+2: [[[...], {...}]]
+special variables:
+function variables:
+0: [['touching the bottom edge of', 'in'], {'color': 'Black', 'size': 20, 'type': 'square', 'x_loc': 40, 'y_loc': 80}]
+len(): 1
+len(): 3
+
+
+
+objs_rels
+[[], [[...], [...], [...]], []]
+special variables:
+function variables:
+0: []
+1: [[[...], [...]], [[...], [...]], [[...], [...]]]
+special variables:
+function variables:
+0: [[0, 1], ['below']]
+1: [[1, 2], ['below']]
+2: [[0, 2], ['below']]
+len(): 3
+2: []
+len(): 3
