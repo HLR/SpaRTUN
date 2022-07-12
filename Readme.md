@@ -1,8 +1,7 @@
-## SpartQA
+## SpaRTUN
+In prolog directory, notebook called rules_text.ipynb, you can find text version of rules used in SpaRTUN.
 
-  
 
-  
 
 For generating the data samples:
 
