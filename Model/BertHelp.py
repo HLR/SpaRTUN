@@ -8,8 +8,12 @@ tokenizerFast = BertTokenizerFast.from_pretrained('bert-base-uncased')
 
 
 def predict_label(result_list):
-    label = torch.argmax(result_list).item()
-    return ["Yes"] if label == 0 else ["No"] if label == 1 else ["DK"]
+    argmax_results = result_list.transpose(0, 2)[1, :, :]
+    result_list = []
+    for result in argmax_results:
+        label = torch.argmax(result).item()
+        result_list.append("Yes" if label == 0 else "No" if label == 1 else "DK")
+    return result_list
 
 
 def boolean_classification(model, question, text, q_types, candidate, correct_labels, device):

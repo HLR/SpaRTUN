@@ -9,7 +9,7 @@ import argparse
 
 def main(args):
     training_file = "../Dataset/train.json"
-    training_dataset = data_loader(training_file, args.qtype, batch_size=4)
+    training_dataset = data_loader(training_file, args.qtype, size=args.training_size, batch_size=args.batch_size)
 
     device = "cpu"
     if args.pretrain == 'bertmc':
@@ -31,7 +31,12 @@ def main(args):
             model.to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
     pred, actual = train(model, training_dataset, optimizer, args.pretrain, args.epoch, device)
-    pred, actual = eval(model, training_dataset, optimizer, args.pretrain, args.epoch, device)
+    output_file = open("result_run.txt", "a")
+    print("Result:", file=output_file)
+    print("Epoch: ", args.epoch,  "lr: ", args.lr, file=output_file)
+    print("Training: ", args.training_size, "Testing: ", args.testing_size, file=output_file)
+    print("Model: ", args.pretrain, file=output_file)
+    eval(model, training_dataset, args.pretrain, output_file, device)
 
 
 if __name__ == "__main__":
@@ -40,6 +45,9 @@ if __name__ == "__main__":
                         help="")
     parser.add_argument("--lr", dest="lr", type=float, default=1e-5,
                         help="")
+    parser.add_argument("--training_size", dest="training_size", type=int, default=300000)
+    parser.add_argument("--testing_size", dest="testing_size", type=int, default=300000)
+    parser.add_argument("--batch_size", dest="batch_size", type=int, default=8)
     parser.add_argument("--pretrain", dest="pretrain", type=str, default="bertbl",
                         help="Name of the pretrained model. Options is bertmc or bertbc")
     parser.add_argument("--qtype", dest="qtype", type=str, default="YN",

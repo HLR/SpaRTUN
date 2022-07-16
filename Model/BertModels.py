@@ -197,7 +197,8 @@ class BertForBooleanQuestion3ClassYN(BertPreTrainedModel):
             for ind, logit in enumerate(logits):
                 sent_logit = logit.unsqueeze(0) if logit.dim() == 1 else logit
                 loss += self.criterion[ind](sent_logit, labels[ind].unsqueeze(0))
-                out_logits.append(self.softmax(logit))
+
+                out_logits.append(self.softmax(logit).unsqueeze(0) if logit.dim() == 1 else self.softmax(logit))
 
             outputs = (loss, torch.stack(out_logits),) + outputs[2:]
 

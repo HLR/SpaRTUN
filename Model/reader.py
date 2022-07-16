@@ -27,9 +27,12 @@ def reader(file, question_type, size=None):
 
     features = []
     target = []
+    count = 0
     for story in data["data"][:size]:
         story_txt = story['story'][0]
         for question in story["questions"]:
+            if count == size:
+                break
             question_txt = question["question"]
             q_type = question["q_type"]
             candidates = question['candidate_answers']
@@ -38,6 +41,7 @@ def reader(file, question_type, size=None):
                 continue
             features.append((question_txt, story_txt, q_type, candidates))
             target.append(answer)
+            count += 1
 
     return features, target
 
