@@ -11,7 +11,12 @@ def main(args):
     training_file = "../Dataset/train.json"
     training_dataset = data_loader(training_file, args.qtype, size=args.training_size, batch_size=args.batch_size)
 
-    device = "cpu"
+    # Set the cuda number we want to use
+    cuda_number = args.cuda_number
+    if cuda_number == -1:
+        device = 'cpu'
+    else:
+        device = "cuda:" + str(cuda_number) if torch.cuda.is_available() else 'cpu'
     if args.pretrain == 'bertmc':
         if args.qtype == 'YN':
             model = BertForMultipleClass.from_pretrained('bert-base-uncased', device=device, drp=args.dropout)
@@ -44,6 +49,8 @@ if __name__ == "__main__":
     parser.add_argument("--epoch", dest="epoch", type=int, default=1,
                         help="")
     parser.add_argument("--lr", dest="lr", type=float, default=1e-5,
+                        help="")
+    parser.add_argument("--cuda_number", dest="cuda_number", type=int, default=0,
                         help="")
     parser.add_argument("--training_size", dest="training_size", type=int, default=300000)
     parser.add_argument("--testing_size", dest="testing_size", type=int, default=300000)
