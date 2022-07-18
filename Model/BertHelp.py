@@ -22,7 +22,7 @@ def boolean_classification(model, question, text, q_types, candidate, correct_la
 
     # To prevent outside to know about this
     labels = []
-    for ind, correct_label in enumerate(correct_labels[0]):
+    for ind, correct_label in enumerate(correct_labels):
         q_type = q_types[ind]
         label = [0]
         if q_type == "YN":
@@ -47,7 +47,7 @@ def multiple_classification(model, question, text, q_types, candidate, correct_l
 
     # To prevent outside to know about this
     labels = []
-    for ind, correct_label in enumerate(correct_labels[0]):
+    for ind, correct_label in enumerate(correct_labels):
         q_type = q_types[ind]
         label = [0]
         if q_type == "YN":

@@ -10,6 +10,8 @@ import argparse
 def main(args):
     training_file = "../Dataset/train.json"
     training_dataset = data_loader(training_file, args.qtype, size=args.training_size, batch_size=args.batch_size)
+    testing_file = "../Dataset/test.json"
+    testing_dataset = data_loader(testing_file, args.qtype, size=args.testing_size, batch_size=args.batch_size)
 
     # Set the cuda number we want to use
     cuda_number = args.cuda_number
@@ -41,7 +43,7 @@ def main(args):
     print("Epoch: ", args.epoch,  "lr: ", args.lr, file=output_file)
     print("Training: ", args.training_size, "Testing: ", args.testing_size, file=output_file)
     print("Model: ", args.pretrain, file=output_file)
-    eval(model, training_dataset, args.pretrain, output_file, device)
+    eval(model, testing_file, args.pretrain, output_file, device)
 
 
 if __name__ == "__main__":
