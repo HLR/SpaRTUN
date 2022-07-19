@@ -43,7 +43,7 @@ def main(args):
     print("Epoch: ", args.epoch,  "lr: ", args.lr, file=output_file)
     print("Training: ", args.training_size, "Testing: ", args.testing_size, file=output_file)
     print("Model: ", args.pretrain, file=output_file)
-    eval(model, testing_file, args.pretrain, output_file, device)
+    eval(model, testing_dataset, args.pretrain, output_file, device)
 
 
 if __name__ == "__main__":

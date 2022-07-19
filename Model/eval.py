@@ -56,4 +56,6 @@ def eval(model, testing_set, pretrain, output_file, device="cpu"):
 
     print('Test Final Macro_F1: ', Macro_F1, file=output_file)
 
+    print("Acc: ", np.sum(TP) / len(pred_all))
+
     return pred_all, actual_all
