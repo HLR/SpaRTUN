@@ -16,7 +16,7 @@ def eval(model, testing_set, pretrain, output_file, device="cpu"):
         loss, output = YN_classification(model, question, text, q_type, candidate, label, device)
 
         pred_all.extend(output)
-        actual_all.extend(label[0])
+        actual_all.extend(label)
 
     TP, TPFN, TPFP = np.array([0] * 3), np.array([0] * 3), np.array([0] * 3)
 
