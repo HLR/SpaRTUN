@@ -3,6 +3,7 @@ from transformers import BertTokenizer, BertTokenizerFast
 import torch
 from BertHelp import *
 import numpy as np
+import pandas as pd
 
 
 def eval(model, testing_set, pretrain, output_file, device="cpu"):
@@ -10,13 +11,20 @@ def eval(model, testing_set, pretrain, output_file, device="cpu"):
     # Adding calculate loss, P, R, and F1
     pred_all = []
     actual_all = []
+    error_data = {"story": [], "question": [], "actual": [], "pred": []}
     YN_classification = multiple_classification if pretrain == "bertmc" else boolean_classification
     for batch, (features, label) in enumerate(tqdm(testing_set, desc="Testing")):
-        question, text, q_type, candidate = features
-        loss, output = YN_classification(model, question, text, q_type, candidate, label, device)
+        questions, text, q_type, candidate = features
+        loss, output = YN_classification(model, questions, text, q_type, candidate, label, device)
 
         pred_all.extend(output)
         actual_all.extend(label)
+        for ind, question in enumerate(questions):
+            if output[ind] != label[ind]:
+                error_data["story"].append(text[ind])
+                error_data["question"].append(question)
+                error_data["actual"].append(label[ind])
+                error_data["pred"].append(output[ind])
 
     TP, TPFN, TPFP = np.array([0] * 3), np.array([0] * 3), np.array([0] * 3)
 
@@ -57,5 +65,8 @@ def eval(model, testing_set, pretrain, output_file, device="cpu"):
     print('Test Final Macro_F1: ', Macro_F1, file=output_file)
 
     print("Acc: ", np.sum(TP) / len(pred_all))
+
+    error_data = pd.DataFrame(error_data)
+    error_data.to_csv("result.csv")
 
     return pred_all, actual_all

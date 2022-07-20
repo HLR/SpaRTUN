@@ -23,8 +23,7 @@ class SpaRTUNDataset(Dataset):
 def reader(file, question_type, size=None):
     with open(file) as json_file:
         data = json.load(json_file)
-    size = len(data["data"]) if not size else size
-    size = min(len(data["data"]), size)
+    size = 300000 if not size else size
 
     features = []
     target = []

@@ -42,6 +42,7 @@ def main(args):
     print("Result:", file=output_file)
     print("Epoch: ", args.epoch,  "lr: ", args.lr, file=output_file)
     print("Training: ", args.training_size, "Testing: ", args.testing_size, file=output_file)
+    print("Test set: ", args.test_set, file=output_file)
     print("Model: ", args.pretrain, file=output_file)
     eval(model, testing_dataset, args.pretrain, output_file, device)
 
