@@ -10,7 +10,7 @@ import argparse
 def main(args):
     training_file = "../Dataset/train.json"
     training_dataset = data_loader(training_file, args.qtype, size=args.training_size, batch_size=args.batch_size)
-    testing_file = "../Dataset/test.json"
+    testing_file = "../Dataset/test.json" if args.test_set != "human" else "../Dataset/human_test.json"
     testing_dataset = data_loader(testing_file, args.qtype, size=args.testing_size, batch_size=args.batch_size)
 
     # Set the cuda number we want to use
@@ -56,6 +56,8 @@ if __name__ == "__main__":
                         help="")
     parser.add_argument("--training_size", dest="training_size", type=int, default=300000)
     parser.add_argument("--testing_size", dest="testing_size", type=int, default=300000)
+    parser.add_argument("--test_set", dest="test_set", type=str, default="spartun",
+                        help="Name of the testing dataset. Options is spartun or human")
     parser.add_argument("--batch_size", dest="batch_size", type=int, default=8)
     parser.add_argument("--pretrain", dest="pretrain", type=str, default="bertbl",
                         help="Name of the pretrained model. Options is bertmc or bertbc")
