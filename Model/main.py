@@ -37,14 +37,14 @@ def main(args):
                     param.requires_grad = False
             model.to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
-    pred, actual = train(model, training_dataset, optimizer, args.pretrain, args.epoch, device)
+    pred, actual = train(model, training_dataset, optimizer, args.pretrain, args.epoch, device, rules_text=args.rules_text)
     output_file = open("result_run.txt", "a")
     print("Result:", file=output_file)
     print("Epoch: ", args.epoch,  "lr: ", args.lr, file=output_file)
     print("Training: ", args.training_size, "Testing: ", args.testing_size, file=output_file)
     print("Test set: ", args.test_set, file=output_file)
     print("Model: ", args.pretrain, file=output_file)
-    eval(model, testing_dataset, args.pretrain, output_file, device)
+    eval(model, testing_dataset, args.pretrain, output_file, device, rules_text=args.rules_text)
 
 
 if __name__ == "__main__":
@@ -67,6 +67,8 @@ if __name__ == "__main__":
     parser.add_argument("--dropout", dest="dropout", type=bool, default=False,
                         help="")
     parser.add_argument("--unfreeze", dest="unfreeze", type=bool, default=False,
+                        help="")
+    parser.add_argument("--rules_text", dest="rules_text", type=bool, default=False,
                         help="")
     args = parser.parse_args()
     main(args)

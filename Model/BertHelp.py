@@ -17,7 +17,7 @@ def predict_label(result_list):
 
 
 def boolean_classification(model, question, text, q_types, candidate, correct_labels, device):
-    encoding = tokenizer(question, text, padding="max_length")
+    encoding = tokenizer(question, text, padding="max_length", truncation=True)
     input_ids = encoding["input_ids"]
 
     # To prevent outside to know about this

@@ -130,7 +130,6 @@ class BertForMultipleClass(BertPreTrainedModel):
 
 
 class BertForBooleanQuestion3ClassYN(BertPreTrainedModel):
-    # TODO: Rewrite this
     def __init__(self, config, device="cpu", drp=False):
         super().__init__(config)
 
@@ -154,8 +153,6 @@ class BertForBooleanQuestion3ClassYN(BertPreTrainedModel):
         self.classifiers = nn.ModuleList(classifiers)
         self.sigmoid = nn.Sigmoid()
         self.softmax = nn.Softmax()
-
-        self.init_weights()
 
     # @add_start_docstrings_to_callable(BERT_INPUTS_DOCSTRING)
     def forward(
