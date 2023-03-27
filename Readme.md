@@ -43,7 +43,9 @@ For generating the data samples:
 
   
 
-Dataset is provided in SpaRTUN.zip : [file](https://drive.google.com/file/d/18Qq_dVeRqdl0_bnHlbsnZSxaCuCz1DBc/view?usp=sharing)
+Download [SpaRTUN](https://www.cse.msu.edu/~kordjams/data/SPARTUN.zip)
+
+Download [ReSQ](https://www.cse.msu.edu/~kordjams/data/ReSQ.zip)
 
   
 
