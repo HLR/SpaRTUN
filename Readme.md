@@ -5,7 +5,7 @@ Recent research shows synthetic data as a source of supervision helps pretrained
 
 
 
-### Citing [Transfer Learning with Synthetic Corpora for Spatial Role Labeling and Reasoning](https://aclanthology.org/2022.emnlp-main.413/):
+#### Citing the paper [Transfer Learning with Synthetic Corpora for Spatial Role Labeling and Reasoning](https://aclanthology.org/2022.emnlp-main.413/):
 
     @inproceedings{mirzaee-kordjamshidi-2022-transfer,
         title = "Transfer Learning with Synthetic Corpora for Spatial Role Labeling and Reasoning",
