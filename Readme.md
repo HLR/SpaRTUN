@@ -1,4 +1,28 @@
 ## SpaRTUN
+
+
+Recent research shows synthetic data as a source of supervision helps pretrained language models (PLM) transfer learning to new target tasks/domains. However, this idea is less explored for spatial language. We provide two new data resources on multiple spatial language processing tasks. The first dataset is synthesized for transfer learning on spatial question answering (SQA) and spatial role labeling (SpRL). Compared to previous SQA datasets, we include a larger variety of spatial relation types and spatial expressions. Our data generation process is easily extendable with new spatial expression lexicons. The second one is a real-world SQA dataset with human-generated questions built on an existing corpus with SPRL annotations. This dataset can be used to evaluate spatial language processing models in realistic situations. We show pretraining with automatically generated data significantly improves the SOTA results on several SQA and SPRL benchmarks, particularly when the training data in the target domain is small.
+
+
+
+### Citation of [Transfer Learning with Synthetic Corpora for Spatial Role Labeling and Reasoning](https://aclanthology.org/2022.emnlp-main.413/):
+
+    @inproceedings{mirzaee-kordjamshidi-2022-transfer,
+        title = "Transfer Learning with Synthetic Corpora for Spatial Role Labeling and Reasoning",
+        author = "Mirzaee, Roshanak  and
+          Kordjamshidi, Parisa",
+        booktitle = "Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing",
+        month = dec,
+        year = "2022",
+        address = "Abu Dhabi, United Arab Emirates",
+        publisher = "Association for Computational Linguistics",
+        url = "https://aclanthology.org/2022.emnlp-main.413",
+        pages = "6148--6165",
+        abstract = "",
+    }
+
+
+
 In prolog directory, notebook called rules_text.ipynb, you can find text version of rules used in SpaRTUN.
 
 
